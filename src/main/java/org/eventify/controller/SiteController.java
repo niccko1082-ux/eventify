@@ -16,7 +16,7 @@ import java.util.Optional;
 
 @Tag(name = "Site", description = "Endpoints para la gestión de sitios (Sites)")
 @RestController
-@RequestMapping("/site/")
+@RequestMapping("/api/sites")
 public class SiteController {
 
     public final SiteService siteService;

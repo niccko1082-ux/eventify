@@ -20,4 +20,8 @@ public class Event {
 
     @Column(name = "type", length = 50)
     private String type;
+
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "site_id", referencedColumnName = "id")
+    private Site site;
 }

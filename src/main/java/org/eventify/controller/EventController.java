@@ -16,7 +16,7 @@ import java.util.Optional;
 
 @Tag(name = "Event", description = "Endpoints para la gestión de eventos (Events)")
 @RestController
-@RequestMapping("/event/")
+@RequestMapping("/api/events")
 public class EventController {
 
     public final EventService eventService;
