@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrar Evento y Sitio</title>
+</head>
+<body>
+
+    <h1>Registrar un Nuevo Evento con su Ubicación</h1>
+
+    <!-- Mostrar mensaje de éxito si vienes de una redirección exitosa -->
+    <div th:if="${param.success}">
+        <p style="color: green;">¡Evento y Sitio registrados correctamente!</p>
+    </div>
+
+    <form th:action="@{/admin/events}" th:object="${registrationDTO}" method="post">
+        
+        <!-- === SECCIÓN DEL EVENTO === -->
+        <fieldset>
+            <legend>Detalles del Evento</legend>
+            
+            <div>
+                <label>Nombre del Evento:</label>
+                <input type="text" th:field="*{eventName}" required />
+            </div>
+            
+            <div>
+                <label>Tipo de Evento:</label>
+                <input type="text" th:field="*{eventType}" required />
+            </div>
+        </fieldset>
+
+        <!-- === SECCIÓN DEL SITIO (VENUE) === -->
+        <fieldset>
+            <legend>Detalles de la Ubicación (Sitio)</legend>
+            
+            <div>
+                <label>Nombre del Sitio:</label>
+                <input type="text" th:field="*{siteName}" required />
+            </div>
+            
+            <div>
+                <label>Dirección:</label>
+                <input type="text" th:field="*{address}" required />
+            </div>
+            
+            <div>
+                <label>Ciudad:</label>
+                <input type="text" th:field="*{city}" required />
+            </div>
+        </fieldset>
+
+        <br>
+        <button type="submit">Guardar Registro Completo</button>
+    </form>
+
+    <br>
+    <a th:href="@{/admin/events}">Volver al Catálogo de Eventos</a>
+
+</body>
+</html>

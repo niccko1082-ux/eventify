@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Catálogo de Eventos</title>
+</head>
+<body>
+    <h1>Catálogo de Eventos</h1>
+
+    <!-- 1. th:if / th:unless -->
+    <div th:if="${#lists.isEmpty(events)}">
+        <p>No hay eventos registrados.</p>
+    </div>
+
+    <table th:unless="${#lists.isEmpty(events)}" border="1">
+        <tr>
+            <th>Nombre del Evento</th>
+            <th>Tipo</th>
+            <th>Sitio</th>
+        </tr>
+        <!-- 2. th:each -->
+        <tr th:each="evento : ${events}">
+            <!-- 3. th:text -->
+            <td th:text="${evento.name}"></td>
+            <td th:text="${evento.type}"></td>
+            <td th:text="${evento.site.siteName}"></td>
+        </tr>
+    </table>
+
+    <br>
+    <a th:href="@{/admin/events/new}">Registrar Nuevo Evento</a>
+</body>
+</html>
